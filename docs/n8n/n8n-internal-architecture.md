@@ -157,7 +157,7 @@ flowchart TD
  I -->|False| B[Unexpected application status]
  H -->|Error after configured retries| F[Capture HTTP Failure]
  F --> J[Structured error item]
- J -.-> K[Future alerting]
+ J --> K[Send an Email - SMTP]
 ```
 
 The branch connections and successful IF True execution were observed. The following are instructed lab settings; the exact timeout and retry values still require verification in the editor.
@@ -190,10 +190,10 @@ Full error serialization is a lab-only diagnostic choice. Sanitize secrets befor
 - [x] Unexpected internal listener identified.
 - [x] Alternative port connection refusal verified from container.
 - [x] HTTP Success and Error connections configured.
-- [ ] Execute workflow using port 59999.
+- [x] Execute workflow using port 59999.
 - [ ] Verify retry configuration and behavior.
-- [ ] Inspect structured error JSON and confirm IF is skipped.
-- [ ] Restore port 5678 and verify recovery.
+- [x] Inspect structured error JSON; IF skipped on that run not independently confirmed.
+- [x] Restore port 5678 and verify endpoint recovery.
 - [ ] Verify IF False with a controlled unhealthy response.
 - [ ] Publish and verify automatic scheduling.
 - [ ] Implement independent monitoring and alert delivery.
@@ -217,4 +217,4 @@ Do not publish with the fault URL configured.
 - [n8n queue mode](https://docs.n8n.io/hosting/scaling/queue-mode/)
 - [Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
 
-These links are suggested further reading; their current contents were not independently retrieved for this document. The exact internal broker role remains an inference pending configuration or startup-log verification. No successful workflow fault-capture execution or automatic schedule is claimed yet.
+These links are suggested further reading; their current contents were not independently retrieved for this document. The exact internal broker role remains an inference pending configuration or startup-log verification. Subsequent fault capture and endpoint recovery were verified; automatic scheduling remains pending. See the [continuation journal](scheduled-health-monitoring-and-smtp.md) for actual JSON, final case-sensitive mappings and Gmail SMTP RCA. The mapping above is the historical initial configuration, superseded by the continuation journal.
