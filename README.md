@@ -1,6 +1,13 @@
 # AI Engineering Learning Lab
 
-Updated: 2026-11-25
+Updated: 2026-11-26
+
+## Documentation index
+
+- [n8n internal architecture and port troubleshooting](docs/n8n/n8n-internal-architecture.md)
+- [Scheduled health monitoring, structured error handling and Gmail SMTP incident journal](docs/n8n/scheduled-health-monitoring-and-smtp.md)
+
+Latest milestone: HTTP fault capture, endpoint recovery and SMTP authentication/send execution confirmed. Dynamic end-to-end alert, inbox receipt, retry behavior, IF False and automatic scheduling remain pending. See the continuation journal for exact evidence and security precautions.
 
 ## 1. Objective
 
@@ -236,8 +243,8 @@ Exact mappings and output values were not visible in the screenshots; the above 
 | Edit Fields | 1 item | Pass |
 | IF equals 1 | True branch 1 item | Pass |
 | IF equals 2 | False branch 1 item | Pending |
-| Schedule Trigger | Automatic execution | Planned |
-| Error handling | Detect failed requests | Planned |
+| Schedule Trigger | Automatic execution | Configured in second workflow; execution pending |
+| Error handling | Detect failed requests | Verified in second workflow |
 | MCP write and execute | Create/run using authorized tools | Pending |
 
 Negative test: change comparison value to 2, execute and confirm False output, then restore 1. Green node checks confirm execution success rather than all data values.
